@@ -21,7 +21,13 @@ jobs:
         sudo apt -y install python python3 python-pip python3-pip cpio wget
        
         mkdir dt
-      
+
+    - name: Python3
+      uses: actions/setup-python@v4
+      with:
+          python-version: '3.9'
+          cache: 'pip'
+          
     - name: Download boot or recovery img
       run: |
         aria2c "${{ github.event.inputs.IMG_URL }}"
