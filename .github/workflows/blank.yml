@@ -16,6 +16,16 @@ jobs:
     steps:
     - name: Check Out
       uses: actions/checkout@main
+       - name: 准备环境
+        run: |
+          sudo apt update
+          sudo apt -y install cpio wget
+
+      - name: 准备Python3
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ github.event.inputs.PY }}
+          cache: 'pip'
       
     - name: Prepare the environment
       
