@@ -6,7 +6,7 @@ on:
       IMG_URL:    
         description: 'IMG_URL'
         required: true
-        default: ''
+        default: '3.9'
 
 jobs:
   build:
@@ -14,24 +14,13 @@ jobs:
     runs-on: ubuntu-20.04
     
     steps:
-    - name: Check Out
-      uses: actions/checkout@main
-       - name: 准备环境
-        run: |
-          sudo apt update
-          sudo apt -y install cpio wget
-
-      - name: 准备Python3
-        uses: actions/setup-python@v4
-        with:
-          python-version: ${{ github.event.inputs.PY }}
-          cache: 'pip'
-      
     - name: Prepare the environment
       
       run: 
         sudo apt update
         sudo apt -y install python python3 python-pip python3-pip cpio wget
+        with:
+          python-version: ${{3.9}}
         pip3 install twrpdtgen
         mkdir dt
       
