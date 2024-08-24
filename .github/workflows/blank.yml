@@ -18,6 +18,10 @@ jobs:
       uses: actions/checkout@main
       
     - name: Prepare the environment
+      uses: actions/setup-python@v4
+        with:
+          python-version: ${{ github.event.inputs.PY }}
+          cache: 'pip'
       run: |
         sudo apt update
         sudo apt -y install python python3 python-pip python3-pip cpio wget
